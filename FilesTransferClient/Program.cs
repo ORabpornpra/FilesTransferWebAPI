@@ -1,5 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Configuration;
+using System.Net;
+using System.Net.Http.Json;
 
 namespace WebAPIClient
 {
@@ -12,7 +14,15 @@ namespace WebAPIClient
         {
             Console.WriteLine("Hello OAT World");
 
-            await Program.GetFileMetaDataAsync();
+            HttpStatusCode postResult = await Program.CreateProductAsync(FileUtility.TestMetaData());
+            if (postResult == HttpStatusCode.Created)
+            {
+                await Program.GetFileMetaDataAsync();
+            }
+            else
+            {
+                Console.WriteLine("Failed To Create MetaData File");
+            }
         }
 
         private static async Task GetFileMetaDataAsync()
@@ -25,6 +35,15 @@ namespace WebAPIClient
 
             var msg = await stringTask;
             Console.WriteLine(msg);
+        }
+
+        private static async Task<HttpStatusCode> CreateProductAsync(FileMetaData fileMetaData)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync(ConfigurationManager.AppSettings.Get("FileMetaDataPost"), fileMetaData);
+            response.EnsureSuccessStatusCode();
+            Console.WriteLine(response.StatusCode.ToString());
+
+            return response.StatusCode;
         }
     }
 }
