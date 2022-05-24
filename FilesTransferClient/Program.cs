@@ -14,15 +14,19 @@ namespace WebAPIClient
         {
             Console.WriteLine("Hello OAT World");
 
-            HttpStatusCode postResult = await Program.CreateProductAsync(FileUtility.TestMetaData());
-            if (postResult == HttpStatusCode.Created)
-            {
-                await Program.GetFileMetaDataAsync();
-            }
-            else
-            {
-                Console.WriteLine("Failed To Create MetaData File");
-            }
+            //HttpStatusCode postResult = await Program.CreateProductAsync(FileUtility.TestMetaData());
+            //if (postResult == HttpStatusCode.Created)
+            //{
+            //    await Program.GetFileMetaDataAsync();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Failed To Create MetaData File");
+            //}
+
+            // Testing
+            string path = @"c:\temp\2018-05-25 11-02-45.mkv";
+            await FileUtility.FileProcess(path);
         }
 
         private static async Task GetFileMetaDataAsync()
