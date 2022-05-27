@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Net;
 using System.Net.Http.Json;
+using FileUtility;
 
 namespace WebAPIClient
 {
@@ -25,8 +26,9 @@ namespace WebAPIClient
             //}
 
             // Testing
-            string path = @"c:\temp\2018-05-25 11-02-45.mkv";
-            await FileUtility.FileProcess(path);
+            string filePath = @"c:\temp\2018-05-25 11-02-45.mkv";
+            string savePath = @"C:\temp\tempWrite\";
+            await FileProcess.CreateFileChunks(filePath, savePath);
         }
 
         private static async Task GetFileMetaDataAsync()

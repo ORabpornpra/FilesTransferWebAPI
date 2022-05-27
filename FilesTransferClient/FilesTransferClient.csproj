@@ -11,4 +11,11 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="FileUtility">
+      <HintPath>..\FileUtility\bin\Debug\net6.0\FileUtility.dll</HintPath>
+      <CopyLocal>True</CopyLocal>
+    </Reference>
+  </ItemGroup>
+
 </Project>
