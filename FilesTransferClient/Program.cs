@@ -15,20 +15,20 @@ namespace WebAPIClient
         {
             Console.WriteLine("Hello OAT World");
 
-            //HttpStatusCode postResult = await Program.CreateProductAsync(FileUtility.TestMetaData());
-            //if (postResult == HttpStatusCode.Created)
-            //{
-            //    await Program.GetFileMetaDataAsync();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Failed To Create MetaData File");
-            //}
+            HttpStatusCode postResult = await Program.CreateProductAsync(FileProcess.TestMetaData());
+            if (postResult == HttpStatusCode.Created)
+            {
+                await Program.GetFileMetaDataAsync();
+            }
+            else
+            {
+                Console.WriteLine("Failed To Create MetaData File");
+            }
 
-            // Testing
-            string filePath = @"c:\temp\2018-05-25 11-02-45.mkv";
-            string savePath = @"C:\temp\tempWrite\";
-            await FileProcess.CreateFileChunks(filePath, savePath);
+            //// Testing
+            //string filePath = @"c:\temp\2018-05-25 11-02-45.mkv";
+            //string savePath = @"C:\temp\tempWrite\";
+            //await FileProcess.CreateFileChunks(filePath, savePath);
         }
 
         private static async Task GetFileMetaDataAsync()

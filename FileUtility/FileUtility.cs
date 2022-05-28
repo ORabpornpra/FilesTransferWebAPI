@@ -16,8 +16,26 @@ namespace FileUtility
             {
                 FileName = "FileName Test",
                 FileExt = "FileExt Test",
-                FilesTotal = 5,
-                FileNamesList = new List<string> { "Chunk_1", "Chunk_2", "Chunk_3", "Chunk_4", "Chunk_5" }
+                FileSize = 2423424235,
+                FilesTotal = 3,
+                FileCunckList = new List<FileChunck>
+                {
+                    new FileChunck()
+                    {
+                        FileChunckName = "Chunk_1",
+                        FileHash = "rwesdfsdvdfewsdv"
+                    },
+                    new FileChunck()
+                    {
+                        FileChunckName = "Chunk_2",
+                        FileHash = "gvbdfdrygbvbxdvl"
+                    },
+                    new FileChunck()
+                    {
+                        FileChunckName = "Chunk_3",
+                        FileHash = "fpijasconawekjc"
+                    }
+                }
             };
 
             return fileMetaData;
@@ -86,9 +104,14 @@ namespace FileUtility
         public int Id { get; set; }
         public string FileName { get; set; }
         public string FileExt { get; set; }
-
+        public long FileSize { get; set; }
         public int FilesTotal { get; set; }
 
-        public List<string> FileNamesList { get; set; }
+        public List<FileChunck> FileCunckList { get; set; }
+    }
+    public class FileChunck
+    {
+        public string FileHash { get; set; }
+        public string FileChunckName { get; set; }
     }
 }
